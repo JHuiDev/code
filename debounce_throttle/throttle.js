@@ -9,12 +9,13 @@
  *  4.监听scorll滚动事件
  * @param {Function} func 
  * @param {Number} wait 
- * @param {Boolean} options 
+ * @param {Object} options leading开始时否立即执行，trailing离开时是否执行最后一次 
  * 参考underscore.js源码
  */
 function thorttle(func, wait, options = { leading: true, trailing: false }) {
     let context, args, timeout, oldTime = 0,
         nowTime, resoult;
+    // 定时器作用时 时间戳不可执行，时间戳作用时定时器不可执行
     let later = function() {
         oldTime = nowTime;
         timeout = null;
@@ -25,6 +26,7 @@ function thorttle(func, wait, options = { leading: true, trailing: false }) {
         args = arguments;
         nowTime = new Date().valueOf();
         if (options.leading === false) oldTime = nowTime;
+        // 使用时间戳的时间差来做到立即执行函数
         if (nowTime - oldTime > wait) {
             if (timeout) {
                 clearTimeout(timeout);
@@ -33,6 +35,7 @@ function thorttle(func, wait, options = { leading: true, trailing: false }) {
             resoult = func.apply(context, args);
             oldTime = nowTime;
         } else if (!timeout && options.trailing !== false) {
+            // 使用定时器做到离开后再执行一次函数
             timeout = setTimeout(later, wait);
         }
         return resoult;
