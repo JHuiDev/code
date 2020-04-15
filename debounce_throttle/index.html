@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            background-color: black;
+            font-weight: bold;
+            font-size: 36px;
+            height: 200px;
+            line-height: 200px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script src="./debounce.js"></script>
+    <script src="./throttle.js"></script>
+    <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore.js"></script>
+    <script>
+        var container = document.querySelector('#container');
+        container.onmousemove = throttle(mousemove(), 1000, {
+            leading: false,
+            trailing: false
+        });
+
+        function mousemove() {
+            var count = 0;
+            return function() {
+                container.innerHTML = count;
+                count++;
+            }
+        }
+    </script>
+</body>
+
+</html>
