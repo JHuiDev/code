@@ -20,20 +20,26 @@
 
 <body>
     <div id="container"></div>
-
-    <script src="./debounce.js"></script>
-    <script src="./throttle.js"></script>
+    <button id="btn">stop</button>
+    <script src="./debounce_3.js"></script>
+    <script src="./throttle_3.js"></script>
     <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore.js"></script>
     <script>
         var container = document.querySelector('#container');
-        container.onmousemove = throttle(mousemove(), 1000, {
-            leading: false,
-            trailing: false
-        });
+        var btn = document.querySelector('#btn');
+        var d = throttle(mousemove(), 1000);
+        console.log(d);
+        container.onmousemove = d;
+        btn.onclick = function() {
+            d.cancel();
+            console.log(1);
+        }
 
         function mousemove() {
             var count = 0;
-            return function() {
+            return function(event) {
+                console.log(this);
+                console.log(event);
                 container.innerHTML = count;
                 count++;
             }

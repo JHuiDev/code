@@ -18,9 +18,9 @@ function throttle(func, wait, options = { leading: true, trailing: false }) {
         nowTime, resoult;
     // 定时器作用时 时间戳不可执行，时间戳作用时定时器不可执行
     let later = function() {
-        oldTime = nowTime;
+        oldTime = 0;
         timeout = null;
-        func.apply(context, args);
+        func.apply(context, arguments);
     };
     let throttled = function() {
         context = this;
