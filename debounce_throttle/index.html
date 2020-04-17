@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            background-color: black;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./throttle.js"></script>
+    <div id="container"></div>
+    <button id="btn">clear</button>
+    <script>
+        var container = document.querySelector('#container');
+
+        var btn = document.querySelector('#btn');
+        var throttled = throttle(move(), 3000, {
+            leading: false,
+            trailing: true
+        });
+        container.onmousemove = throttled;
+
+        btn.onclick = function() {
+            throttled.cancel();
+        }
+
+        function move() {
+
+            count = 0;
+            return function() {
+                container.innerHTML = count;
+                count++;
+            }
+        }
+    </script>
+</body>
+
+</html>
