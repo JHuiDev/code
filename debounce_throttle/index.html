@@ -8,16 +8,19 @@
     <style>
         #container {
             background-color: black;
+            font-weight: bold;
+            font-size: 36px;
             height: 200px;
-            text-align: center;
             line-height: 200px;
             color: white;
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
-    <script src="./throttle.js"></script>
+    <script src="./throttle.js">
+    </script>
     <div id="container"></div>
     <button id="btn">clear</button>
     <script>
@@ -35,9 +38,11 @@
         }
 
         function move() {
-
             count = 0;
             return function() {
+
+                console.log(this);
+                console.log(event);
                 container.innerHTML = count;
                 count++;
             }

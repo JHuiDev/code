@@ -33,7 +33,7 @@ function debounce(func, wait, immediate = false) {
 
             timeout = setTimeout(() => {
                 // 改变函数内部的this指向;
-                func.apply(this, arguments);
+                result = func.apply(this, arguments);
             }, wait);
         }
         return result;

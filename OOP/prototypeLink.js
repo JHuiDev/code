@@ -10,12 +10,11 @@ var Person = function() {
     this.age = 23;
 }
 var Child = function() {
-    this.age = 12;
-}
-var earthExample = new Earth();
-Animal.prototype = earthExample;
-var animalExample = new Animal();
-Person.prototype = animalExample;
-var personExample = new Person();
-Child.prototype = personExample;
-var childExample = new Child();
+    this.name = 12;
+};
+// Animal.prototype = Earth.prototype;
+// Person.prototype = Animal.prototype;
+Child.prototype.show
+Child.prototype = Person.prototype;
+Child.prototype.constructor = Child;
+var child = new Child();

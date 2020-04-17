@@ -13,6 +13,7 @@
  * 参考underscore.js源码
  */
 function throttle(func, wait, options = { leading: true, trailing: false }) {
+
     let timeout,
         oldTime = 0,
         nowTime,
@@ -24,6 +25,7 @@ function throttle(func, wait, options = { leading: true, trailing: false }) {
         resoult = func.apply(this, arguments);
     };
     let throttled = function() {
+
         nowTime = new Date().valueOf();
         if (options.leading === false && !oldTime) oldTime = nowTime;
         // 使用时间戳的时间差来做到立即执行函数
