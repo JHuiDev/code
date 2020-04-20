@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./tabSwitch.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            overflow: hidden;
+            list-style: none;
+        }
+        
+        .active {
+            background-color: royalblue;
+        }
+        
+        #warp {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+        
+        #warp li {
+            float: left;
+            border: 1px solid royalblue;
+            width: 100px;
+            height: 40px;
+        }
+        
+        #warp li a {
+            outline: none;
+        }
+        
+        #warp .content {
+            height: 300px;
+            width: 304px;
+            border: 1px solid royalblue;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="warp">
+        <ul>
+            <li class="active"><a href="javascript:viod(0)">1</a> </li>
+            <li><a href="javascript:viod(0)">2</a></li>
+            <li><a href="javascript:viod(0)">3</a></li>
+        </ul>
+        <div class="content" style="display: block;">1</div>
+        <div class="content">2</div>
+        <div class="content">3</div>
+    </div>
+</body>
+
+<script>
+    var warp = document.getElementById('warp');
+    var tabswicth = new TabSwitch(warp);
+</script>
+
+
+</html>

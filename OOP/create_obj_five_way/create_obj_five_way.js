@@ -53,8 +53,6 @@ var man = Person("xiaoma", 28);
 var woman = Person('xiaohau', 22);
 console.log(man, woman);
 //3.1 构造函数拓展模式
-
-
 //3.2 寄生构造函数模式
 //3.3 稳妥构造函数模式
 
