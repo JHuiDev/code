@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <script src="./module.js"></script>
     <script src="./tabSwitch.js"></script>
+    <script src="./namespace.js"></script>
     <style>
         * {
             margin: 0;
@@ -64,6 +65,15 @@
 <script>
     var warp = document.getElementById('warp');
     var tabswicth = new TabSwitch(warp);
+    module1.m1();
+    var p1 = new namespace.PersonInfo({
+        name: "xiaoming",
+        gender: "男"
+    });
+    namespace.PerosnInfoUtil.show(p1)
+    var cat = new namespace.sub.Cat("xiaobai", 'white');
+    console.log(cat);
+    cat.sleep();
 </script>
 
 
