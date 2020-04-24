@@ -26,8 +26,8 @@ function deepCopy(sourceObj, newObj) {
     for (key in sourceObj) {
         // 确保是自己对象上的属性，而非继承的
         if (sourceObj.hasOwnProperty(key)) {
-            // 数组和对象都使用typeof都会返回object
-            if (sourceObj[key] && typeof sourceObj[key] === 'object') {
+            // 数组和对象都使用typeof都会返回object,检查是否为dom元素
+            if (sourceObj[key].nodeType !== 1 && sourceObj[key] && typeof sourceObj[key] === 'object') {
                 // 通过构造器判断是数组还是对象
                 newObj[key] = sourceObj[key].constructor === Array ? [] : {};
                 newObj[key] = deepCopy(sourceObj[key], newObj[key]);
